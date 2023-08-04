@@ -1,0 +1,68 @@
+<p>employee-create works!</p>
+<div class="container-fluid">
+  <div class="row">
+    <form>
+      <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" name="" class="form-control" />
+        <br /><br />
+      </div>
+    </form>
+  </div>
+  <form [formGroup]="form" (ngSubmit)="processForm(form)">
+    <mat-form-field>
+      <mat-label>Name</mat-label>
+      <input matInput name="name" #fullName />
+      <mat-icon matSuffix>person</mat-icon>
+      <mat-hint>Please enter your full name.</mat-hint>
+      <mat-error>Name is a required field</mat-error>
+    </mat-form-field>
+    <br /><br />
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input matInput name="email" #email />
+      <mat-icon matSuffix>mail_outline</mat-icon>
+      <mat-hint>Please enter your e-mail address.</mat-hint>
+      <mat-error>Email is a required field.</mat-error>
+      <mat-error>Invalid email format.</mat-error>
+    </mat-form-field>
+    <br /><br />
+    <mat-form-field>
+      <mat-label>Address</mat-label>
+      <textarea
+        matInput
+        formControlName="address"
+        cols="30"
+        rows="10"
+      ></textarea>
+      <mat-icon matSuffix>contact_mail</mat-icon>
+    </mat-form-field>
+    <br />
+    <br />
+    <mat-form-field>
+      <mat-label>Country</mat-label>
+      <mat-select matNativeControl formControlName="country" #country>
+        <mat-option value="Singapore">Singapore</mat-option>
+        <mat-option value="Singapore">Malaysia</mat-option>
+        <mat-option value="Singapore">China</mat-option>
+        <mat-option value="Singapore">India</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br />
+    <div class="row">
+      <mat-label>Gender</mat-label>
+      <mat-radio-group formControlName="gender">
+        <mat-radio-button value="Male">Male</mat-radio-button>
+        <mat-radio-button value="Male">Female</mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <br />
+    <mat-form-field>
+      <mat-label>Date of Birth</mat-label>
+      <input formControlName="birthDate" matInput [matDatepicker]="picker" />
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+  </form>
+</div>
